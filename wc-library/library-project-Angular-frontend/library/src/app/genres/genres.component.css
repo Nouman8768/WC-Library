@@ -1,0 +1,61 @@
+/* .gradient-custom-3 {
+  background: #84fab0;
+
+  background: -webkit-linear-gradient(
+    to right,
+    rgba(132, 250, 176, 0.5),
+    rgba(143, 211, 244, 0.5)
+  );
+
+  background: linear-gradient(
+    to right,
+    rgba(132, 250, 176, 0.5),
+    rgba(143, 211, 244, 0.5)
+  );
+}
+.gradient-custom-4 {
+  background: #84fab0;
+
+  background: -webkit-linear-gradient(
+    to right,
+    rgba(132, 250, 176, 1),
+    rgba(143, 211, 244, 1)
+  );
+
+  background: linear-gradient(
+    to right,
+    rgba(132, 250, 176, 1),
+    rgba(143, 211, 244, 1)
+  );
+} */
+
+/*GEtALLTABLE*/
+/*GEtALLTABLE*/
+/*GEtALLTABLE*/
+/*GEtALLTABLE*/
+/*GEtALLTABLE*/
+/*GEtALLTABLE*/
+/* 
+table {
+  width: 100%;
+  table-layout: fixed;
+  background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+}
+.tbl-header {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.tbl-content {
+  height: auto;
+  overflow-x: auto;
+  margin-top: 0px;
+  border: 0px solid rgba(255, 255, 255, 0.3);
+}
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+body {
+  background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+  background: linear-gradient(to right, #25c481, #25b7c4);
+  font-family: "Roboto", sans-serif;
+}
+section {
+  margin: 20px;
+} */
