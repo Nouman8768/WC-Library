@@ -10,4 +10,6 @@ export class Book {
   price?: number;
 
   genres_name?: string;
+
+  coverimage?: string;
 }

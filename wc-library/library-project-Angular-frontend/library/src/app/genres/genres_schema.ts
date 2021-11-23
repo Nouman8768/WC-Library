@@ -1,9 +1,11 @@
 export class Genres {
-  name!: string;
+  _id?: string;
 
-  floor!: string;
+  name?: string;
 
-  dep_number!: number;
+  floor?: string;
 
-  shelves!: number;
+  dep_number?: number;
+
+  shelves?: number;
 }

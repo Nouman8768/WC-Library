@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { from, switchMap } from 'rxjs';
 import { Book, bookdocument } from './booksschema';
 
 @Injectable()
@@ -32,7 +33,17 @@ export class BooksService {
       return await this.book_model.deleteOne({ _id: id });
     }
   }
-  // async deletebooks(id: string) {
-  //   return await this.book_model.deleteOne({ id });
-  // }
+  updateone(id: any, book: any) {
+    delete book.bid;
+    delete book.name;
+    delete book.author;
+    delete book.price;
+    delete book.genres_name;
+    return from(this.book_model.update({ id, book })).pipe(
+      switchMap(() => this.findOne(id)),
+    );
+  }
+  findOne(id: Book) {
+    return from(this.book_model.findOne({ id }));
+  }
 }

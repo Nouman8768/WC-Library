@@ -5,9 +5,10 @@ import { AppService } from './app.service';
 import { LibraryModule } from './genres/library.module';
 import { BooksModule } from './genres/books/books.module';
 import { MembersModule } from './visitors/members/members.module';
+import { ImagesModule } from './images/images.module';
 
 @Module({
-  imports: [MembersModule,LibraryModule, MongooseModule.forRoot("mongodb://localhost:27017/WC-Library"), BooksModule],
+  imports: [MembersModule,LibraryModule, MongooseModule.forRoot("mongodb://localhost:27017/WC-Library"), BooksModule, ImagesModule],
   controllers: [AppController],
   providers: [AppService],
 })

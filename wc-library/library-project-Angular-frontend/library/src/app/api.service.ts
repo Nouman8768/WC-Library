@@ -8,10 +8,20 @@ import { Genres } from './genres/genres_schema';
 })
 export class ApiService {
   private book?: Book;
+  private genre?: Genres;
   API_SERVER = 'http://localhost:3000';
   constructor(private httpclient: HttpClient) {}
+  public genresetter(genre: Genres) {
+    this.genre = genre;
+  }
+  public genregetter() {
+    return this.genre;
+  }
   public setter(book: Book) {
     this.book = book;
+  }
+  public getter() {
+    return this.book;
   }
 
   //-------------------------------------Books EndPoints-----------------------------------
@@ -19,11 +29,6 @@ export class ApiService {
   public getallbooks() {
     return this.httpclient.get<Book[]>(`${this.API_SERVER}/books`);
   }
-  // public getbookbyid(genreID: Book) {
-  //   return this.httpclient.get<Book>(
-  //     `${this.API_SERVER}/books/${genreID}/singlegenres`
-  //   );
-  // }
   public addbooks(books: Book) {
     return this.httpclient.post<Book>(`${this.API_SERVER}/books`, books);
   }
@@ -43,6 +48,11 @@ export class ApiService {
   public deletebooks(id: string) {
     return this.httpclient.delete(`${this.API_SERVER}/books/${id}`);
   }
+  public uploadbookimage(image: File) {
+    // const formData = new FormData();
+    // formData.append('file', image);
+    return this.httpclient.post<any>(`${this.API_SERVER}/images/upload`, image);
+  }
 
   //-------------------------------------Genre EndPoints------------------------------------
 
@@ -54,9 +64,9 @@ export class ApiService {
       `${this.API_SERVER}/genres/${genreID}/singlegenres`
     );
   }
-  async getallBooksofSingleGenere(name: string) {
-    return this.httpclient.get<Genres>(
-      `${this.API_SERVER}/genres/${{ genres_name: name }}/bookofsinglegenres`
+  async getallBooksofSingleGenere(genre: Genres) {
+    return this.httpclient.get<Book[]>(
+      `${this.API_SERVER}/genres/booksofperticulargenre/${genre}`
     );
   }
   public addgenres(genres: Genres) {

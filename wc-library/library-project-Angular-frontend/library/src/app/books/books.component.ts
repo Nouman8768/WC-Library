@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { NavigationExtras, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 import { Book } from './bookschema';
 
@@ -10,16 +10,19 @@ import { Book } from './bookschema';
   styleUrls: ['./books.component.css'],
 })
 export class BooksComponent implements OnInit {
-  _id = new FormControl('');
   BookForm = new FormGroup({
+    _id: new FormControl(''),
     bid: new FormControl(''),
     name: new FormControl(''),
     author: new FormControl(''),
     price: new FormControl(''),
     genres_name: new FormControl(''),
+    coverimage: new FormControl(''),
   });
-  results?: Book[];
+  results?: Book[] = [];
+  searchedText: string = '';
   model: any;
+
   constructor(
     private readonly apiService: ApiService,
     private router: Router
@@ -34,18 +37,7 @@ export class BooksComponent implements OnInit {
   getallbooks() {
     this.model = this.apiService.getallbooks().subscribe((data) => {
       this.results = data;
-      //console.log(this.results);
     });
-  }
-
-  async putupdatebooks() {
-    this.model = this.apiService
-      .putupdatebooks(this._id.value, this.BookForm.value)
-      .subscribe((data: any) => {
-        this.results = data;
-        console.log(data);
-      });
-    this.router.navigate(['/updatebooks']);
   }
 
   deletebooks(book: Book) {
@@ -55,18 +47,19 @@ export class BooksComponent implements OnInit {
     });
   }
 
-  datapassing() {
-    let id = this.BookForm.value._id;
-    let navigationExtras: NavigationExtras = {
-      state: {
-        _id: id,
-      },
-    };
-    this.router.navigate(['/updatebooks'], navigationExtras);
-  }
-
   bookupdate(result: Book) {
     this.apiService.setter(result);
     this.router.navigate(['/updatebooks']);
+  }
+  search_books() {
+    if (this.searchedText != '') {
+      this.results = this.results?.filter((res) => {
+        return res.name
+          ?.toLocaleLowerCase()
+          .match(this.searchedText.toLocaleLowerCase());
+      });
+    } else if (this.searchedText == '') {
+      this.ngOnInit();
+    }
   }
 }

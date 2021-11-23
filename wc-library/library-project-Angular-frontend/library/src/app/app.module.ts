@@ -19,6 +19,9 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { AdbooksComponent } from './books/adbooks/adbooks.component';
 import { UpdatebooksComponent } from './books/updatebooks/updatebooks.component';
 import { DeletebooksComponent } from './books/deletebooks/deletebooks.component';
+import { FilterPipe } from './Pipes/filter.pipe';
+import { AddgenresComponent } from './genres/addgenres/addgenres.component';
+import { SinlegenrebooksComponent } from './genres/sinlegenrebooks/sinlegenrebooks.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { DeletebooksComponent } from './books/deletebooks/deletebooks.component'
     AdbooksComponent,
     UpdatebooksComponent,
     DeletebooksComponent,
+    FilterPipe,
+    AddgenresComponent,
+    SinlegenrebooksComponent,
   ],
   imports: [
     MatTableModule,

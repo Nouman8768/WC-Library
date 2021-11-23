@@ -1,4 +1,3 @@
-import { FocusMonitor } from '@angular/cdk/a11y';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/api.service';
@@ -16,23 +15,21 @@ export class AdbooksComponent implements OnInit {
     author: new FormControl(''),
     price: new FormControl(''),
     genres_name: new FormControl(''),
+    coverimage: new FormControl(''),
   });
   results?: Book[];
   model: any;
   constructor(private readonly apiService: ApiService) {}
 
   ngOnInit() {}
-  getallbooks() {
-    this.model = this.apiService.getallbooks().subscribe((data) => {
-      this.results = data;
-      console.log(this.results);
-    });
-  }
   addbooks() {
     this.model = this.apiService
       .addbooks(this.AddbookForm.value)
       .subscribe((result) => {
         console.log(result);
       });
+  }
+  uploadimage() {
+    this.apiService.uploadbookimage(this.AddbookForm.value.coverimage);
   }
 }

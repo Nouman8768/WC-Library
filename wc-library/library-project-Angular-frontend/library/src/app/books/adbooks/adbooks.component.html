@@ -14,17 +14,6 @@
                       type="text"
                       id="form3Example1cg"
                       class="form-control form-control-lg"
-                      formControlName="bid"
-                    />
-                    <label class="form-label" for="form3Example1cg"
-                      >Book Id</label
-                    >
-                  </div>
-                  <div class="form-outline mb-4">
-                    <input
-                      type="text"
-                      id="form3Example1cg"
-                      class="form-control form-control-lg"
                       formControlName="name"
                     />
                     <label class="form-label" for="form3Example1cg"
@@ -66,6 +55,21 @@
                     <label class="form-label" for="form3Example4cdg"
                       >Enter Genre of the Book</label
                     >
+                  </div>
+                  <div class="text-center">
+                    <input
+                      type="file"
+                      id="form3Example4cdg"
+                      class="form-control form-control-lg"
+                      formControlName="coverimage"
+                    />
+                    <button
+                      class="btn btn-success"
+                      style="margin-top: 1%; margin-bottom: 10%"
+                      (click)="uploadimage()"
+                    >
+                      Upload Image
+                    </button>
                   </div>
 
                   <div class="d-flex justify-content-center">

@@ -1,9 +1,94 @@
-<!-- UI CARD -->
-
-<div style="background-image: url(librarypic.jpg)" class="ui">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div
+    class="container-fluid"
+    style="
+      background-image: url('https://mdbootstrap.com/img/Photos/new-templates/search-box/img4.jpg');
+    "
+  >
+    <a class="navbar-brand" href="#">WC Library</a>
+    <button
+      class="navbar-toggler"
+      type="text"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href="#"
+            routerLink=""
+            routerLinkActive="GenresComponent"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href="#"
+            routerLink="/books"
+            routerLinkActive="GenresComponent"
+            >Books</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            aria-current="page"
+            href="#"
+            routerLink="/genres"
+            routerLinkActive="BooksComponent"
+            >Genres</a
+          >
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input
+          class="form-control me-2"
+          type="text"
+          placeholder="Search Book by Name"
+          aria-label="Search"
+          [(ngModel)]="searchedText"
+          (input)="search_books()"
+          name="name"
+        />
+      </form>
+    </div>
+  </div>
+</nav>
+<div class="background">
   <div class="d-flex justify-content-center">
     <button
-      style="margin-top: 2%; margin-left: 0%; margin-bottom: 5%"
+      style="margin-top: 1%"
       type="button"
       class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
       routerLink="/"
@@ -11,7 +96,7 @@
       Go Back
     </button>
     <button
-      style="margin-top: 2%; margin-left: 60%; margin-bottom: 5%"
+      style="margin-left: 60%; margin-top: 1%"
       type="button"
       class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
       routerLink="/adbooksroute"
@@ -19,71 +104,70 @@
       Add Books
     </button>
   </div>
-  <div
-    style="margin: 2%"
-    class="a-box"
-    *ngFor="let result of results; let i = index"
-  >
-    <div class="img-container">
-      <div class="img-inner">
-        <div class="inner-skew">
-          <img
-            src="https://cdn.elearningindustry.com/wp-content/uploads/2016/05/top-10-books-every-college-student-read-e1464023124869.jpeg"
-          />
+  <div class="grid" *ngFor="let result of results">
+    <div class="blog-card spring-fever">
+      <h3>
+        <a>{{ result?.coverimage }}</a>
+      </h3>
+      <div class="title-content">
+        <h3>
+          <a href="#">{{ result?.name }}</a>
+        </h3>
+        <div class="intro">
+          <h5>
+            <a>Author<b>:</b>&nbsp;{{ result?.author }}</a>
+          </h5>
+
+          <h5>
+            <a>Price<b>:</b>&nbsp;Rs{{ result?.price }}</a>
+          </h5>
+          <h5>
+            <a>Genre<b>:</b>&nbsp;{{ result?.genres_name }}</a>
+          </h5>
         </div>
       </div>
-    </div>
-    <div class="text-container" style="background-color: rgb(61, 102, 61)">
-      <!-- <h3>
-        <a>_Id<b>:</b>&nbsp;{{ result?._id }}</a>
-      </h3> -->
-      <h3>
-        <a>Id<b>:</b>&nbsp;{{ result?.bid }}</a>
-      </h3>
-      <h3>
-        <a>Book<b>:</b>&nbsp;{{ result?.name }}</a>
-      </h3>
-      <h3>
-        <a>Author<b>:</b>&nbsp;{{ result?.author }}</a>
-      </h3>
-
-      <h3>
-        <a>Price<b>:</b>&nbsp;Rs{{ result?.price }}</a>
-      </h3>
-
-      <h3>
-        <a>Genre<b>:</b>&nbsp;{{ result?.genres_name }}</a>
-      </h3>
-      <button
-        style="
-          margin-top: 2%;
-          margin-left: 2%;
-          margin-bottom: 5%;
-          height: 45px;
-          width: 100px;
-          text-align: center;
-        "
-        type="button"
-        class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
-        (click)="putupdatebooks()"
-      >
-        <h5 style="color: whitesmoke">Update</h5>
-      </button>
-      <button
-        style="
-          margin-top: 2%;
-          margin-left: 2%;
-          margin-bottom: 5%;
-          height: 45px;
-          width: 100px;
-          text-align: center;
-        "
-        type="button"
-        class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
-        (click)="deletebooks(result)"
-      >
-        <h5 style="color: whitesmoke">Delete</h5>
-      </button>
+      <div class="card-info">
+        <button
+          style="
+            margin-top: 2%;
+            margin-left: 2%;
+            margin-bottom: 5%;
+            height: 45px;
+            width: 100px;
+            text-align: center;
+          "
+          type="button"
+          class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+          (click)="bookupdate(result)"
+        >
+          <h5 style="color: whitesmoke">Update</h5>
+        </button>
+        <button
+          style="
+            margin-top: 2%;
+            margin-left: 2%;
+            margin-bottom: 5%;
+            height: 45px;
+            width: 100px;
+            text-align: center;
+          "
+          type="button"
+          class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+          (click)="deletebooks(result)"
+        >
+          <h5 style="color: whitesmoke">Delete</h5>
+        </button>
+      </div>
+      <div class="utility-info">
+        <ul class="utility-list">
+          <li><span class="licon icon-like"></span><a href="#">2</a></li>
+          <li><span class="licon icon-com"></span><a href="#">12</a></li>
+          <li><span class="licon icon-dat"></span>03 jun 2017</li>
+        </ul>
+      </div>
+      <div class="gradient-overlay"></div>
+      <div class="color-overlay"></div>
+      <!-- /.blog-card -->
     </div>
   </div>
 </div>

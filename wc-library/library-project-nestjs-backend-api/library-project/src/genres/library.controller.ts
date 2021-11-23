@@ -29,12 +29,6 @@ export class LibraryController {
   @Get('booksofperticulargenre/:genrename')
   async getallBooksofSingleGenere(@Param('genrename') genrename: string) {
     return this.lib_service.getallBooksofSingleGenere(genrename);
-    //     var check = await this.lib_service.getdepartmentbyid(id);
-    //     if (check != null) { return this.lib_service.getallBooksofSingleGenere(id) }
-    //     else {
-
-    //         throw new HttpException('ID does not match to any Genres,Please Enter a valid Genre ID', 404)
-    //     }
   }
   @Post()
   async adddepartments(@Body() department: string) {

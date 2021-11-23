@@ -4,7 +4,9 @@ import { AdbooksComponent } from './books/adbooks/adbooks.component';
 import { BooksComponent } from './books/books.component';
 import { DeletebooksComponent } from './books/deletebooks/deletebooks.component';
 import { UpdatebooksComponent } from './books/updatebooks/updatebooks.component';
+import { AddgenresComponent } from './genres/addgenres/addgenres.component';
 import { GenresComponent } from './genres/genres.component';
+import { SinlegenrebooksComponent } from './genres/sinlegenrebooks/sinlegenrebooks.component';
 import { HomepageComponent } from './homepage/homepage.component';
 
 const routes: Routes = [
@@ -14,6 +16,8 @@ const routes: Routes = [
   { path: 'updatebooks', component: UpdatebooksComponent },
   { path: 'deletebooks', component: DeletebooksComponent },
   { path: 'genres', component: GenresComponent },
+  { path: 'addgenres', component: AddgenresComponent },
+  { path: 'singlegenrebooks', component: SinlegenrebooksComponent },
 ];
 
 @NgModule({

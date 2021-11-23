@@ -19,7 +19,6 @@ export class LibraryService {
     return this.dep_model.findById(depID);
   }
   async getallBooksofSingleGenere(name: string) {
-    //return this.book_model.find({genres_id:id})
     return this.book_model.find({ genres_name: name });
   }
   async adddepartment(department) {
