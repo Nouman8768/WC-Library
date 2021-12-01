@@ -106,9 +106,7 @@
   </div>
   <div class="grid" *ngFor="let result of results">
     <div class="blog-card spring-fever">
-      <h3>
-        <a>{{ result?.coverimage }}</a>
-      </h3>
+      <img src="{{ imageUrl + result?.coverimage }}" alt="" />
       <div class="title-content">
         <h3>
           <a href="#">{{ result?.name }}</a>

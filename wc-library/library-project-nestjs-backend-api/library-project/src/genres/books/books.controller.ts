@@ -22,7 +22,7 @@ export class BooksController {
     return this.bookservice.getallbooks();
   }
   @Post()
-  async addbooks(@Body() book: string) {
+  async addbooks(@Body() book: Book) {
     const adddepartment = await this.bookservice.addbooks(book);
     return adddepartment;
   }

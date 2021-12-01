@@ -1,16 +1,21 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { ApiProperty } from '@nestjs/swagger';
+import { Document } from 'mongoose';
 @Schema()
 export class Book {
-  @Prop()
-  bid: number;
+  @ApiProperty()
   @Prop()
   name: string;
+  @ApiProperty()
   @Prop()
   author: string;
+  @ApiProperty()
   @Prop()
   price: number;
+  @ApiProperty()
   @Prop()
   genres_name: string;
+  @ApiProperty()
   @Prop()
   coverimage: string;
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { from, switchMap } from 'rxjs';
+import { ImagesController } from 'src/images/images.controller';
 import { Book, bookdocument } from './booksschema';
 
 @Injectable()
@@ -13,9 +14,11 @@ export class BooksService {
   async getallbooks() {
     return this.book_model.find();
   }
-  async addbooks(book) {
-    const newbook = new this.book_model(book);
-    return newbook.save();
+  async addbooks(book: Book): Promise<bookdocument> {
+    book.coverimage = ImagesController.imageUrl;
+    return await this.book_model.create(book);
+    // const newbook = new this.book_model(book);
+    // return newbook.save();
   }
   async putupdatebooks(id: string, book: bookdocument) {
     const a = await this.book_model.findById(id);

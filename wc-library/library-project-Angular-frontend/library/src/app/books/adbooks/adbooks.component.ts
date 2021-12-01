@@ -30,6 +30,7 @@ export class AdbooksComponent implements OnInit {
       });
   }
   uploadimage() {
-    this.apiService.uploadbookimage(this.AddbookForm.value.coverimage);
+    if (this.AddbookForm.value.coverimage != null)
+      this.apiService.uploadbookimage(this.AddbookForm.value.coverimage);
   }
 }

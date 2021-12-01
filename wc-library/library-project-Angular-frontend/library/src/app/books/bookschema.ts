@@ -1,8 +1,6 @@
 export class Book {
   _id?: string;
 
-  bid?: number;
-
   name?: string;
 
   author?: string;

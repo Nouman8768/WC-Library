@@ -12,7 +12,6 @@ import { Book } from './bookschema';
 export class BooksComponent implements OnInit {
   BookForm = new FormGroup({
     _id: new FormControl(''),
-    bid: new FormControl(''),
     name: new FormControl(''),
     author: new FormControl(''),
     price: new FormControl(''),
@@ -22,6 +21,7 @@ export class BooksComponent implements OnInit {
   results?: Book[] = [];
   searchedText: string = '';
   model: any;
+  imageUrl: string = 'http://localhost:4200';
 
   constructor(
     private readonly apiService: ApiService,
@@ -29,6 +29,7 @@ export class BooksComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.log('images' + this.imageUrl);
     this.model = this.apiService.getallbooks().subscribe((data) => {
       this.results = data;
       console.log(this.results);

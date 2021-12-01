@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+
 import { ApiService } from 'src/app/api.service';
 import { Book } from '../bookschema';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-updatebooks',
@@ -26,7 +25,6 @@ export class UpdatebooksComponent implements OnInit {
     const a = this.apiService.getter();
     this.UpdatebookForm.setValue({
       _id: a?._id,
-      bid: a?.bid,
       name: a?.name,
       author: a?.author,
       price: a?.price,
